@@ -71,28 +71,28 @@ const teamMembers = [
     name: 'John Doe',
     position: 'CEO',
     description: 'John leads our team with over 20 years of experience in the cattle farming industry.',
-    image: 'https://images.unsplash.com/photo-1595152772835-219674b2a8a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHBvcnRyYWl0fGVufDB8fHx8MTY0Njg3MTQ4MA&ixlib=rb-1.2.1&q=80&w=400',
+    image: 'https://i.ibb.co/PTc3r0v/team-member-1.jpg',
   },
   {
     id: 2,
     name: 'Jane Smith',
     position: 'CTO',
     description: 'Jane is the driving force behind our innovative breeding and farming techniques.',
-    image: 'https://images.unsplash.com/photo-1595152772835-219674b2a8a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHBvcnRyYWl0fGVufDB8fHx8MTY0Njg3MTQ4MA&ixlib=rb-1.2.1&q=80&w=400',
+    image: 'https://i.ibb.co/PTc3r0v/team-member-1.jpg',
   },
   {
     id: 3,
     name: 'Michael Johnson',
     position: 'COO',
     description: 'Michael ensures that our farming operations run smoothly and efficiently.',
-    image: 'https://images.unsplash.com/photo-1595152772835-219674b2a8a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHBvcnRyYWl0fGVufDB8fHx8MTY0Njg3MTQ4MA&ixlib=rb-1.2.1&q=80&w=400',
+    image: 'https://i.ibb.co/PTc3r0v/team-member-1.jpg',
   },
   {
     id: 4,
     name: 'Emily Davis',
     position: 'CFO',
     description: 'Emily manages our financial health with expertise and precision.',
-    image: 'https://images.unsplash.com/photo-1595152772835-219674b2a8a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHBvcnRyYWl0fGVufDB8fHx8MTY0Njg3MTQ4MA&ixlib=rb-1.2.1&q=80&w=400',
+    image: 'https://i.ibb.co/PTc3r0v/team-member-1.jpg',
   },
 ];
 
