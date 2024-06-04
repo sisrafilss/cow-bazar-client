@@ -11,6 +11,7 @@ import LoginPage from "../pages/Login";
 import PrivateRoute from "./private/PrivateRoute";
 import EditProfile from "../pages/Dashboard/EditProfile";
 import AddCow from "../pages/Dashboard/AddCow";
+import AllCows from "../pages/Dashboard/AllCows";
 
 const token = localStorage.getItem("token");
 
@@ -79,6 +80,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddCow />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "all-cows",
+        element: (
+          <PrivateRoute>
+            <AllCows />
           </PrivateRoute>
         ),
       },
