@@ -1,9 +1,11 @@
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 
 function EditProfile() {
   const userInfo = useLoaderData();
   const { name, email, photoURL, contactNumber, address, age } = userInfo;
+  const token = localStorage.getItem("token");
 
   const {
     register,
@@ -13,7 +15,13 @@ function EditProfile() {
 
   const onSubmit = (data) => {
     data.email = email;
-    console.log(data);
+    axios
+      .patch(`http://localhost:5000/user/${email}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => console.log(res.data));
   };
 
   return (
@@ -117,8 +125,6 @@ function EditProfile() {
               className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               value="submit"
             />
-              
-           
           </form>
         </div>
       </div>
