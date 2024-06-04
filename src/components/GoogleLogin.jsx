@@ -7,7 +7,22 @@ const GoogleLogin = () => {
   const handleGoogleSignIn = () => {
     console.log("Google Sign-In");
     // Implement Google Sign-In logic here
-    googleLogin();
+    googleLogin()
+      .then((res) => {
+        const user = res.user;
+        console.log("Signed in using google. Result: ", user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        console.log("Error Code:", errorCode);
+        console.log("Error message: ", errorMessage);
+        console.log("Email:", email);
+        console.log(error);
+      });
   };
 
   return (

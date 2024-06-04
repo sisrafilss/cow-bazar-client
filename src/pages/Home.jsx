@@ -3,7 +3,7 @@ import Testimonial from "../components/home/Testimonial";
 import TopCows from "../components/home/TopCows";
 import TopBlogs from "../components/home/TopBlogs";
 import ContactUs from "../components/home/ContactUs";
-import NewsletterSection from "../components/home/NewsLetter";
+// import NewsletterSection from "../components/home/NewsLetter";
 
 const Home = () => {
   return (
@@ -13,7 +13,7 @@ const Home = () => {
       <Testimonial />
       <TopBlogs />
       <ContactUs />
-      <NewsletterSection />
+      {/* <NewsletterSection /> */}
     </>
   );
 };
