@@ -9,6 +9,9 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import RegistrationPage from "../pages/Registration";
 import LoginPage from "../pages/Login";
 import PrivateRoute from "./private/PrivateRoute";
+import EditProfile from "../pages/Dashboard/EditProfile";
+
+const token = localStorage.getItem("token");
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +57,21 @@ export const router = createBrowserRouter([
             <Dashboard />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "profile/edit/:_id",
+        element: (
+          <PrivateRoute>
+            <EditProfile />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/user/get/${params._id}`, {
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${token}`,
+            },
+          }),
       },
     ],
   },
