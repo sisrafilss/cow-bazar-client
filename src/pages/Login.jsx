@@ -1,46 +1,46 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useForm } from "react-hook-form";
-// import { useEffect } from "react";
 import GoogleLogin from "../components/GoogleLogin";
 import GitHubLogin from "../components/GitHubLogin";
-import { Link,  } from "react-router-dom";
-// import useAuth from "../hooks/useAuth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { useEffect, useState } from "react";
 
 const LoginPage = () => {
-  // const { user, signIn } = useAuth();
+  const { user, signIn } = useAuth();
 
-  // const location = useLocation();
-  // const navigate = useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // const from = location?.state?.from?.pathname || "/";
+  const from = location?.state?.from?.pathname || "/";
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  // const [loginError, setLoginError] = useState("");
+  const [loginError, setLoginError] = useState("");
 
   const onSubmit = (data) => {
     console.log(data);
     // Simulate a login attempt and error handling
-    // if (data.password !== "correct_password") {
-    //   setLoginError("Incorrect password. Please try again.");
-    // } else {
-    //   setLoginError("");
-    //   console.log("Login successful");
-    //   // Redirect or perform post-login actions here
-    // }
-    // signIn(data?.email, data?.password);
+    if (data.password !== "correct_password") {
+      setLoginError("Incorrect password. Please try again.");
+    } else {
+      setLoginError("");
+      console.log("Login successful");
+      // Redirect or perform post-login actions here
+    }
+    signIn(data?.email, data?.password);
   };
 
   // Redirect user where he came from or to homepage
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate(from, { replace: true });
-  //     console.log(from);
-  //   }
-  // }, [from, navigate, user]);
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+      console.log(from);
+    }
+  }, [from, navigate, user]);
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -54,13 +54,13 @@ const LoginPage = () => {
         </div>
         <div className="card shrink-0 w-full max-w-md shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-            {/* {loginError && (
+            {loginError && (
               <div className="alert alert-error shadow-lg">
                 <div>
                   <span>{loginError}</span>
                 </div>
               </div>
-            )} */}
+            )}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -103,7 +103,7 @@ const LoginPage = () => {
             <GitHubLogin />
             <div className="text-center mt-0 mt-4 ">
               <p>
-                Don't have an account? {" "}
+                Don't have an account?{" "}
                 <Link to="/register" className="text-blue-500">
                   Register
                 </Link>

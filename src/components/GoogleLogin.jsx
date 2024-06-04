@@ -1,13 +1,13 @@
 import { FcGoogle } from "react-icons/fc";
-// import useAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 
 const GoogleLogin = () => {
-  // const { googleLogin } = useAuth();
+  const { googleLogin } = useAuth();
 
   const handleGoogleSignIn = () => {
     console.log("Google Sign-In");
     // Implement Google Sign-In logic here
-    // googleLogin();
+    googleLogin();
   };
 
   return (

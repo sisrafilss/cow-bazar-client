@@ -1,17 +1,16 @@
 import { useForm } from "react-hook-form";
-// import { useEffect, useState } from "react";
-import { Link  } from "react-router-dom"; // Assuming you're using react-router for navigation
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "../components/GoogleLogin";
 import GitHubLogin from "../components/GitHubLogin";
-import { useState } from "react";
-// import useAuth from "../hooks/useAuth";
+import { useEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 const RegistrationPage = () => {
-  // const { createUser, user } = useAuth();
-  // const location = useLocation();
-  // const navigate = useNavigate();
+  const { createUser, user } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // const from = location?.state?.from?.pathname || "/";
+  const from = location?.state?.from?.pathname || "/";
 
   const {
     register,
@@ -30,19 +29,19 @@ const RegistrationPage = () => {
       setRegistrationError("");
       console.log("Registration successful");
       // Redirect or perform post-registration actions here
-      // createUser(data?.email, data?.password);
+      createUser(data?.email, data?.password);
     }
   };
 
   const password = watch("password", "");
 
   // Redirect user where he came from or to homepage
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate(from, { replace: true });
-  //     console.log(from);
-  //   }
-  // }, [from, navigate, user]);
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+      console.log(from);
+    }
+  }, [from, navigate, user]);
 
   return (
     <div className="hero min-h-screen bg-base-200">

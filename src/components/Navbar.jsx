@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logOut } = {};
+  const { user, logOut } = useAuth();
 
   return (
     <div className="navbar bg-base-100 shadow-lg">
