@@ -1,5 +1,6 @@
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../hooks/useAuth";
+import axios from "axios";
 
 const GoogleLogin = () => {
   const { googleLogin } = useAuth();
@@ -7,22 +8,18 @@ const GoogleLogin = () => {
   const handleGoogleSignIn = () => {
     console.log("Google Sign-In");
     // Implement Google Sign-In logic here
-    googleLogin()
-      .then((res) => {
-        const user = res.user;
-        console.log("Signed in using google. Result: ", user);
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        console.log("Error Code:", errorCode);
-        console.log("Error message: ", errorMessage);
-        console.log("Email:", email);
-        console.log(error);
-      });
+    googleLogin().then((data) => {
+      if (data?.user.email) {
+        const userData = {
+          email: data?.user?.email,
+          name: data?.user?.displayName,
+        };
+        axios.post("http://localhost:5000/user", userData).then((response) => {
+          console.log(response.data.token);
+          localStorage.setItem("token", response?.data?.token);
+        });
+      }
+    });
   };
 
   return (

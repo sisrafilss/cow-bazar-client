@@ -1,4 +1,4 @@
-// import Banner from "../components/home/Banner";
+import Banner from "../components/home/Banner";
 import Testimonial from "../components/home/Testimonial";
 import TopCows from "../components/home/TopCows";
 import TopBlogs from "../components/home/TopBlogs";
@@ -8,7 +8,7 @@ import NewsletterSection from "../components/home/NewsLetter";
 const Home = () => {
   return (
     <>
-      {/* <Banner /> */}
+      <Banner />
       <TopCows />
       <Testimonial />
       <TopBlogs />

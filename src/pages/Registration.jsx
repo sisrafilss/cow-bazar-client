@@ -4,6 +4,7 @@ import GoogleLogin from "../components/GoogleLogin";
 import GitHubLogin from "../components/GitHubLogin";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import axios from "axios";
 
 const RegistrationPage = () => {
   const { createUser, user } = useAuth();
@@ -29,7 +30,20 @@ const RegistrationPage = () => {
       setRegistrationError("");
       console.log("Registration successful");
       // Redirect or perform post-registration actions here
-      createUser(data?.email, data?.password);
+      createUser(data?.email, data?.password).then((response) => {
+        if (response?.user.email) {
+          const userData = {
+            email: response?.user?.email,
+            name: data?.name,
+          };
+          axios
+            .post("http://localhost:5000/user", userData)
+            .then((response) => {
+              console.log(response.data.token);
+              localStorage.setItem("token", response?.data?.token);
+            });
+        }
+      });
     }
   };
 
