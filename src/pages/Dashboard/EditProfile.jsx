@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 function EditProfile() {
@@ -21,7 +22,9 @@ function EditProfile() {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res.data));
+      .then(() => {
+        toast.success("Profile Data Updated!");
+      });
   };
 
   return (
@@ -122,16 +125,12 @@ function EditProfile() {
 
             <input
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              value="submit"
+              className="w-full cursor-pointer bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              value="Update Profile"
             />
           </form>
         </div>
       </div>
-
-      {/* {showToast && (
-        <UpdateToast product={product} onClose={() => setShowToast(false)} />
-      )} */}
     </>
   );
 }

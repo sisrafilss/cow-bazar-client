@@ -12,6 +12,7 @@ import PrivateRoute from "./private/PrivateRoute";
 import EditProfile from "../pages/Dashboard/EditProfile";
 import AddCow from "../pages/Dashboard/AddCow";
 import AllCows from "../pages/Dashboard/AllCows";
+import EditCow from "../pages/Dashboard/EditCow";
 
 const token = localStorage.getItem("token");
 
@@ -90,6 +91,21 @@ export const router = createBrowserRouter([
             <AllCows />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "all-cows/edit/:id",
+        element: (
+          <PrivateRoute>
+            <EditCow />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/cows/${params.id}`, {
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${token}`,
+            },
+          }),
       },
     ],
   },

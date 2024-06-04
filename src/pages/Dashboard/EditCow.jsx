@@ -2,14 +2,16 @@ import axios from "axios";
 
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
 
-function AddCow() {
+function EditCow() {
   const token = localStorage.getItem("token");
+
+  const cow = useLoaderData();
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
@@ -20,18 +22,13 @@ function AddCow() {
 
     if (userConfirmed) {
       axios
-        .post("http://localhost:5000/cows", data, {
+        .patch(`http://localhost:5000/cows/${cow?._id}`, data, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then(function (response) {
-          console.log(response);
-          console.log(response.data);
-          if (response.data?.insertedId) {
-            toast.success("Cow added successfully!");
-          }
-          reset();
+        .then(function () {
+          toast.success("Cow's Data Updated!");
         })
         .catch(function (error) {
           console.log(error);
@@ -43,7 +40,9 @@ function AddCow() {
     <>
       <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-lg p-8 bg-white shadow-md rounded-lg">
-          <h1 className="text-2xl font-bold mb-6 text-center">Add a Cow</h1>
+          <h1 className="text-2xl font-bold mb-6 text-center">
+            Edit the Cow Information
+          </h1>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">
@@ -51,6 +50,7 @@ function AddCow() {
               </label>
               <input
                 type="text"
+                defaultValue={cow?.title}
                 {...register("title", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
@@ -65,6 +65,7 @@ function AddCow() {
               </label>
               <textarea
                 {...register("description", { required: true })}
+                defaultValue={cow?.description}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
               {errors.description && (
@@ -79,6 +80,7 @@ function AddCow() {
                 Long Description
               </label>
               <textarea
+                defaultValue={cow?.long_description}
                 {...register("long_description", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
@@ -95,6 +97,7 @@ function AddCow() {
               </label>
               <input
                 type="number"
+                defaultValue={cow?.price}
                 {...register("price", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
@@ -109,6 +112,7 @@ function AddCow() {
               </label>
               <input
                 type="number"
+                defaultValue={cow?.age}
                 {...register("age", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
@@ -123,6 +127,7 @@ function AddCow() {
               </label>
               <input
                 type="text"
+                defaultValue={cow?.breed}
                 {...register("breed", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
@@ -137,6 +142,7 @@ function AddCow() {
               </label>
               <input
                 type="number"
+                defaultValue={cow?.weight}
                 {...register("weight", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
@@ -151,6 +157,7 @@ function AddCow() {
               </label>
               <input
                 type="text"
+                defaultValue={cow?.location}
                 {...register("location", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
@@ -167,6 +174,7 @@ function AddCow() {
               </label>
               <input
                 type="number"
+                defaultValue={cow?.rating}
                 step="0.1"
                 {...register("rating", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
@@ -182,6 +190,7 @@ function AddCow() {
               </label>
               <input
                 type="url"
+                defaultValue={cow?.image_url}
                 {...register("image_url", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
@@ -196,19 +205,13 @@ function AddCow() {
               type="submit"
               className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             >
-              Submit
+              Update Data
             </button>
           </form>
         </div>
       </div>
-      {/* {showToast && (
-        <CowAddedToast
-          cow={addedCow}
-          onClose={() => setShowToast(false)}
-        />
-      )} */}
     </>
   );
 }
 
-export default AddCow;
+export default EditCow;
