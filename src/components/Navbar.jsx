@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { useState } from "react";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const [searchText, setSearchText] = useState("");
 
-  console.log("Logging user from navbar.js",user);
+  const handleSearch = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  console.log("Logging user from navbar.js", user);
 
   return (
     <div className="navbar bg-base-100 shadow-lg">
@@ -38,6 +44,9 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/contact-us">Contact</Link>
+            </li>
+            <li>
+              <Link to="/all-cows-us">All Cows</Link>
             </li>
             <li>
               <Link to="/dashboard">Dashboard</Link>
@@ -77,6 +86,9 @@ const Navbar = () => {
             <Link to="/contact-us">Contact</Link>
           </li>
           <li>
+            <Link to="/all-cows">All Cows</Link>
+          </li>
+          <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
 
@@ -97,6 +109,15 @@ const Navbar = () => {
             </>
           )}
         </ul>
+      </div>
+      <div className="form-control ml-10">
+        <input
+          type="text"
+          value={searchText}
+          onChange={handleSearch}
+          placeholder="Search cow"
+          className="input input-bordered w-24 md:w-auto"
+        />
       </div>
       <div className="navbar-end">
         {user && (

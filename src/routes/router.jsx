@@ -48,6 +48,14 @@ export const router = createBrowserRouter([
         element: <RegistrationPage />,
       },
       {
+        path: "all-cows",
+        element: (
+          <div className="my-8">
+            <AllCows />
+          </div>
+        ),
+      },
+      {
         path: "all-cows/:id",
         element: <SingleCow />,
         loader: ({ params }) =>

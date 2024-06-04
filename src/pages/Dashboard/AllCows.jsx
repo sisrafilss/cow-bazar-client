@@ -8,14 +8,14 @@ const AllCows = () => {
     fetch("http://localhost:5000/cows")
       .then((res) => res.json())
       .then((data) => setProducts(data));
-  }, []);
+}, []);
 
   const handleDeleteCow = (id) => {
     setProducts(cows.filter((cow) => cow._id !== id));
   };
 
   return (
-    <div className="container mx-auto justify-center grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ">
+    <div className="container mx-auto justify-center grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
       {cows.map((cow) => (
         <CowCardDashboard
           key={cow._id}
