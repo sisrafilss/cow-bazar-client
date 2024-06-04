@@ -23,7 +23,7 @@ const DashboardLayout = () => {
           </li>
           <li className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
             <FaPlusCircle />
-            <Link to="add-products" className="text-white">Add Product</Link>
+            <Link to="add-cow" className="text-white">Add Cow</Link>
           </li>
           <li className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
             <FaHome />
@@ -44,7 +44,7 @@ const DashboardLayout = () => {
           </li>
           <li onClick={toggleSidebar} className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
             <FaPlusCircle />
-            <Link to="add-products" className="text-white">Add Product</Link>
+            <Link to="add-cow" className="text-white">Add Cow</Link>
           </li>
           <li onClick={toggleSidebar} className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
             <FaHome />

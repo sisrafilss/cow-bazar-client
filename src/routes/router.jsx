@@ -10,6 +10,7 @@ import RegistrationPage from "../pages/Registration";
 import LoginPage from "../pages/Login";
 import PrivateRoute from "./private/PrivateRoute";
 import EditProfile from "../pages/Dashboard/EditProfile";
+import AddCow from "../pages/Dashboard/AddCow";
 
 const token = localStorage.getItem("token");
 
@@ -72,6 +73,14 @@ export const router = createBrowserRouter([
               authorization: `Bearer ${token}`,
             },
           }),
+      },
+      {
+        path: "add-cow",
+        element: (
+          <PrivateRoute>
+            <AddCow />
+          </PrivateRoute>
+        ),
       },
     ],
   },
