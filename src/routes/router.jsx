@@ -72,6 +72,7 @@ export const router = createBrowserRouter([
             <Dashboard />
           </PrivateRoute>
         ),
+        loader: () => fetch(`http://localhost:5000/cows`),
       },
       {
         path: "profile/edit/:_id",
