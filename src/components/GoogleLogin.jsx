@@ -9,6 +9,8 @@ const GoogleLogin = () => {
     console.log("Google Sign-In");
     // Implement Google Sign-In logic here
     googleLogin().then((data) => {
+      console.log("from google login component:",data)
+
       if (data?.user.email) {
         const userData = {
           email: data?.user?.email,
