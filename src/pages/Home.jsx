@@ -8,7 +8,7 @@ import NewsletterSection from "../components/home/NewsLetter";
 const Home = () => {
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
       <TopCows />
       <Testimonial />
       <TopBlogs />
