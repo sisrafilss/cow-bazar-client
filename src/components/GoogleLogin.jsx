@@ -13,6 +13,7 @@ const GoogleLogin = () => {
         const userData = {
           email: data?.user?.email,
           name: data?.user?.displayName,
+          photoURL: data?.user?.photoURL,
         };
         axios.post("http://localhost:5000/user", userData).then((response) => {
           console.log(response.data.token);
