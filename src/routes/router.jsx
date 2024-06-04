@@ -13,6 +13,7 @@ import EditProfile from "../pages/Dashboard/EditProfile";
 import AddCow from "../pages/Dashboard/AddCow";
 import AllCows from "../pages/Dashboard/AllCows";
 import EditCow from "../pages/Dashboard/EditCow";
+import SingleCow from "../pages/SingleCow";
 
 const token = localStorage.getItem("token");
 
@@ -45,6 +46,17 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegistrationPage />,
+      },
+      {
+        path: "all-cows/:id",
+        element: <SingleCow />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/cows/${params.id}`, {
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${token}`,
+            },
+          }),
       },
     ],
   },
@@ -91,6 +103,21 @@ export const router = createBrowserRouter([
             <AllCows />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "all-cows/:id",
+        element: (
+          <PrivateRoute>
+            <SingleCow />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/cows/${params.id}`, {
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${token}`,
+            },
+          }),
       },
       {
         path: "all-cows/edit/:id",

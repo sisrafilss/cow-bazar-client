@@ -3,7 +3,7 @@ import StarRatings from "react-star-ratings";
 import { Link } from "react-router-dom";
 
 const CowCard = ({ cow }) => {
-  const { id, title, description, price, age, rating, image_url } = cow;
+  const { _id, title, description, price, age, rating, image_url } = cow;
 
   return (
     <div className="card card-compact max-w-80 bg-base-100 shadow-xl mx-auto">
@@ -30,7 +30,7 @@ const CowCard = ({ cow }) => {
         />
       </div>
       <Link
-        to={`/cow/${id}`}
+        to={`all-cows/${_id}`}
         className="btn btn-primary w-full rounded-none rounded-b-xl"
       >
         See Details
