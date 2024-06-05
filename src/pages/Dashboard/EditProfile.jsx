@@ -71,7 +71,7 @@ function EditProfile() {
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
               {errors.contactNumber && (
-                <span className="text-red-500 text-sm">Brand is required</span>
+                <span className="text-red-500 text-sm">Contact number is required</span>
               )}
             </div>
 
@@ -81,14 +81,10 @@ function EditProfile() {
               </label>
               <textarea
                 defaultValue={address}
-                {...register("address", { required: true })}
+                {...register("address", { required: false })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
-              {errors.address && (
-                <span className="text-red-500 text-sm">
-                  Description is required
-                </span>
-              )}
+             
             </div>
 
             <div>
@@ -98,14 +94,10 @@ function EditProfile() {
               <input
                 type="text"
                 defaultValue={photoURL}
-                {...register("photoURL", { required: true })}
+                {...register("photoURL", { required: false })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
-              {errors.photoURL && (
-                <span className="text-red-500 text-sm">
-                  Image URL is required
-                </span>
-              )}
+             
             </div>
 
             <div>
@@ -115,12 +107,10 @@ function EditProfile() {
               <input
                 type="number"
                 defaultValue={age}
-                {...register("age", { required: true })}
+                {...register("age", { required: false })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
-              {errors.age && (
-                <span className="text-red-500 text-sm">Age is required</span>
-              )}
+             
             </div>
 
             <input
