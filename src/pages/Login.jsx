@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useForm } from "react-hook-form";
 import GoogleLogin from "../components/GoogleLogin";
-import GitHubLogin from "../components/GitHubLogin";
+// import GitHubLogin from "../components/GitHubLogin";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
@@ -100,7 +100,7 @@ const LoginPage = () => {
             </div>
 
             <GoogleLogin />
-            <GitHubLogin />
+            {/* <GitHubLogin /> */}
             <div className="text-center mt-0 mt-4 ">
               <p>
                 Don't have an account?{" "}

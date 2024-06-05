@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "../components/GoogleLogin";
-import GitHubLogin from "../components/GitHubLogin";
+// import GitHubLogin from "../components/GitHubLogin";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
@@ -154,7 +154,7 @@ const RegistrationPage = () => {
               </button>
             </div>
             <GoogleLogin />
-            <GitHubLogin />
+            {/* <GitHubLogin /> */}
           </form>
           <div className="text-center mt-0 pb-8">
             <p>
