@@ -1,5 +1,6 @@
-import CowCard from "../../components/CowCard";
+
 import { useEffect, useState } from "react";
+import CowCard from "../components/CowCard";
 
 const AllCows = () => {
   const [cows, setCows] = useState([]);

@@ -22,7 +22,7 @@ const CowCard = ({ cow }) => {
         </div>
         <p>{description}</p>
         <StarRatings
-          rating={rating}
+          rating={Number(rating)}
           starRatedColor="gold"
           numberOfStars={5}
           starDimension="20px"
