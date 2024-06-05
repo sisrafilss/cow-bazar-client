@@ -30,7 +30,7 @@ const CowCard = ({ cow }) => {
         />
       </div>
       <Link
-        to={`all-cows/${_id}`}
+        to={`/all-cows/${_id}`}
         className="btn btn-primary w-full rounded-none rounded-b-xl"
       >
         See Details

@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          console.log("user is signed in:",user);
+          console.log("user is signed in:", user);
           setUser(user);
           setLoading(false);
         } else {

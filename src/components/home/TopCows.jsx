@@ -22,7 +22,7 @@ const TopCows = () => {
       </div>
       <div className="container mx-auto justify-center grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {cows.slice(0, 4).map((cow) => (
-          <CowCard key={cow.id} cow={cow} />
+          <CowCard key={cow._id} cow={cow} />
         ))}
       </div>
     </div>

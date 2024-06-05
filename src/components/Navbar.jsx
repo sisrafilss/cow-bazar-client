@@ -1,14 +1,28 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { useState } from "react";
+import useSearch from "../hooks/useSearch";
+// import useSearch from "../hooks/useSearch";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  const [searchText, setSearchText] = useState("");
 
-  const handleSearch = (e) => {
-    setSearchText(e.target.value);
-  };
+  // const [searchText, setSearchText] = useState("");
+  const { handleSearch, searchText } = useSearch();
+
+  // const handleSearch = (e) => {
+  //   setSearchText(e.target.value);
+
+  //   const filteredResults = cows.filter((cow) =>
+  //     cow.title.toLowerCase().includes(searchText.toLowerCase())
+  //   );
+  //   setFilteredCows(filteredResults);
+
+  //   console.log(filteredCows);
+  // };
+
+  // useEffect(() => {
+  //   axios.get("http://localhost:5000/cows").then((res) => setCows(res.data));
+  // }, []);
 
   console.log("Logging user from navbar.js", user);
 
@@ -114,8 +128,8 @@ const Navbar = () => {
         <input
           type="text"
           value={searchText}
-          onChange={handleSearch}
-          placeholder="Search cow"
+          onChange={(e) => handleSearch(e)}
+          placeholder="Search by cow name i.e. Jersey"
           className="input input-bordered w-24 md:w-auto"
         />
       </div>
