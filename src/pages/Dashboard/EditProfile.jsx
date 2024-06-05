@@ -17,7 +17,7 @@ function EditProfile() {
   const onSubmit = (data) => {
     data.email = email;
     axios
-      .patch(`https://cow-bazar-server-psi.vercel.app/user/${email}`, data, {
+      .patch(`https://cow-bazar-server-zeta.vercel.app/user/${email}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

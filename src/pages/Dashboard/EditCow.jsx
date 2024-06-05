@@ -22,7 +22,7 @@ function EditCow() {
 
     if (userConfirmed) {
       axios
-        .patch(`https://cow-bazar-server-psi.vercel.app/cows/${cow?._id}`, data, {
+        .patch(`https://cow-bazar-server-zeta.vercel.app/cows/${cow?._id}`, data, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

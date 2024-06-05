@@ -5,7 +5,7 @@ const AllCowsDashboard = () => {
   const [cows, setCows] = useState([]);
 
   useEffect(() => {
-    fetch("https://cow-bazar-server-psi.vercel.app/cows")
+    fetch("https://cow-bazar-server-zeta.vercel.app/cows")
       .then((res) => res.json())
       .then((data) => setCows(data));
   }, []);

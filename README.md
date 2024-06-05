@@ -19,4 +19,4 @@ Hosted in Vercel: [https://cow-bazar-client.vercel.app/](https://cow-bazar-clien
 
 * Live Website: [https://cow-bazar-client.vercel.app/](https://cow-bazar-client.vercel.app/)
 
-* Server URL: [https://cow-bazar-server-psi.vercel.app/](https://cow-bazar-server-psi.vercel.app/)
+* Server URL: [https://cow-bazar-server-zeta.vercel.app/](https://cow-bazar-server-zeta.vercel.app/)

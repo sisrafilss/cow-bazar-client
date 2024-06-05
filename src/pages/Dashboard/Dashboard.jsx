@@ -12,7 +12,7 @@ const Dashboard = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const url = `https://cow-bazar-server-psi.vercel.app/user/${user?.email}`;
+    const url = `https://cow-bazar-server-zeta.vercel.app/user/${user?.email}`;
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
