@@ -5,26 +5,9 @@ import useSearch from "../hooks/useSearch";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-
-  // const [searchText, setSearchText] = useState("");
   const { handleSearch, searchText } = useSearch();
 
-  // const handleSearch = (e) => {
-  //   setSearchText(e.target.value);
-
-  //   const filteredResults = cows.filter((cow) =>
-  //     cow.title.toLowerCase().includes(searchText.toLowerCase())
-  //   );
-  //   setFilteredCows(filteredResults);
-
-  //   console.log(filteredCows);
-  // };
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:5000/cows").then((res) => setCows(res.data));
-  // }, []);
-
-  console.log("Logging user from navbar.js", user);
+  console.log("from navbar.jsx", user);
 
   return (
     <div className="navbar bg-base-100 shadow-lg">
