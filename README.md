@@ -1,4 +1,4 @@
-# Cow Bazar 
+# Cow Bazar Client
 ## A reliable cow shop
 
 CowBazar is a cow website of a famous cow farm in Bangladesh. You can visit the CowBazar website from the following links:
