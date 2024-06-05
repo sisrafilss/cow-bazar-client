@@ -44,24 +44,44 @@ const AuthProvider = ({ children }) => {
   };
 
   //   manage user state
-  useEffect(() => {
-    const unsubscribe = () => {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          console.log("user is signed in:", user);
-          setUser(user);
-          setLoading(false);
-        } else {
-          setLoading(false);
-          console.log("user signed out!");
-        }
-      });
-    };
+  // useEffect(() => {
+  //   const unsubscribe = () => {
+  //     onAuthStateChanged(auth, (user) => {
+  //       if (user) {
+  //         console.log("user is signed in:", user);
+  //         setUser(user);
+  //         setLoading(false);
+  //       } else {
+  //         setLoading(false);
+  //         console.log("user signed out!");
+  //       }
+  //     });
+  //   };
 
+  //   return () => {
+  //     return unsubscribe();
+  //   };
+  // }, []);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("user is signed in:", user);
+        setUser(user);
+        setLoading(false);
+      } else {
+        setLoading(false);
+        console.log("user signed out!");
+      }
+    });
+  
     return () => {
-      return unsubscribe();
+      unsubscribe();
     };
   }, []);
+  
+
+
 
   const authInfo = { user, loading, googleLogin, createUser, signIn, logOut };
 
