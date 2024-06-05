@@ -6,7 +6,7 @@ const AllCows = () => {
   const [cows, setCows] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/cows")
+    fetch("https://cow-bazar-server-psi.vercel.app/cows")
       .then((res) => res.json())
       .then((data) => setCows(data));
   }, []);

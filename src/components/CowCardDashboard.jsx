@@ -14,7 +14,7 @@ const CowCardDashboard = ({ cow, onDelete }) => {
     );
     if (userConfirmed) {
       axios
-        .delete(`http://localhost:5000/cows/${_id}`, {
+        .delete(`https://cow-bazar-server-psi.vercel.app/cows/${_id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

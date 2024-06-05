@@ -21,7 +21,7 @@ const SearchContext = ({ children }) => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:5000/cows").then((res) => setCows(res.data));
+    axios.get("https://cow-bazar-server-psi.vercel.app/cows").then((res) => setCows(res.data));
   }, []);
 
   const value = {

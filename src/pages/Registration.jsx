@@ -37,7 +37,7 @@ const RegistrationPage = () => {
             name: data?.name,
           };
           axios
-            .post("http://localhost:5000/user", userData)
+            .post("https://cow-bazar-server-psi.vercel.app/user", userData)
             .then((response) => {
               console.log(response.data.token);
               localStorage.setItem("token", response?.data?.token);

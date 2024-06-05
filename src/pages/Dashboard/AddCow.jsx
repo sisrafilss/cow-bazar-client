@@ -20,7 +20,7 @@ function AddCow() {
 
     if (userConfirmed) {
       axios
-        .post("http://localhost:5000/cows", data, {
+        .post("https://cow-bazar-server-psi.vercel.app/cows", data, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

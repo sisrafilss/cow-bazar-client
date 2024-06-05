@@ -8,7 +8,7 @@ const TopCows = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/cows")
+      .get("https://cow-bazar-server-psi.vercel.app/cows")
       .then((res) => setCows(res.data));
   }, []);
 

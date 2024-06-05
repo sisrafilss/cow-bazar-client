@@ -1,8 +1,16 @@
-import { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { FaTachometerAlt, FaBoxOpen, FaPlusCircle, FaHome, FaBars } from 'react-icons/fa';
+import { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+import {
+  FaTachometerAlt,
+  FaBoxOpen,
+  FaPlusCircle,
+  FaHome,
+  FaBars,
+} from "react-icons/fa";
+import useAuth from "../hooks/useAuth";
 
 const DashboardLayout = () => {
+  const {logOut} = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -15,46 +23,97 @@ const DashboardLayout = () => {
         <ul className="space-y-4">
           <li className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
             <FaTachometerAlt />
-            <Link to="/dashboard" className="text-white">Dashboard</Link>
+            <Link to="/dashboard" className="text-white">
+              Dashboard
+            </Link>
           </li>
           <li className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
             <FaBoxOpen />
-            <Link to="all-cows" className="text-white">All Cows</Link>
+            <Link to="all-cows" className="text-white">
+              All Cows
+            </Link>
           </li>
           <li className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
             <FaPlusCircle />
-            <Link to="add-cow" className="text-white">Add Cow</Link>
+            <Link to="add-cow" className="text-white">
+              Add Cow
+            </Link>
           </li>
           <li className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
             <FaHome />
-            <Link to="/" className="text-white">Home</Link>
+            <Link to="/" className="text-white">
+              Home
+            </Link>
+          </li>
+          <li>
+            <button
+              onClick={logOut}
+              className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
+            >
+              Log Out
+            </button>
           </li>
         </ul>
       </div>
 
-      <div className={`z-50 fixed top-0 left-0 h-full bg-gray-800 text-white p-6 w-64 lg:hidden ${isSidebarOpen ? 'block' : 'hidden'}`}>
+      <div
+        className={`z-50 fixed top-0 left-0 h-full bg-gray-800 text-white p-6 w-64 lg:hidden ${
+          isSidebarOpen ? "block" : "hidden"
+        }`}
+      >
         <ul className="space-y-4">
-          <li onClick={toggleSidebar} className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
+          <li
+            onClick={toggleSidebar}
+            className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700"
+          >
             <FaTachometerAlt />
-            <Link to="/dashboard" className="text-white">Dashboard</Link>
+            <Link to="/dashboard" className="text-white">
+              Dashboard
+            </Link>
           </li>
-          <li onClick={toggleSidebar} className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
+          <li
+            onClick={toggleSidebar}
+            className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700"
+          >
             <FaBoxOpen />
-            <Link to="all-cows" className="text-white">All Cows</Link>
+            <Link to="all-cows" className="text-white">
+              All Cows
+            </Link>
           </li>
-          <li onClick={toggleSidebar} className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
+          <li
+            onClick={toggleSidebar}
+            className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700"
+          >
             <FaPlusCircle />
-            <Link to="add-cow" className="text-white">Add Cow</Link>
+            <Link to="add-cow" className="text-white">
+              Add Cow
+            </Link>
           </li>
-          <li onClick={toggleSidebar} className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700">
+          <li
+            onClick={toggleSidebar}
+            className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700"
+          >
             <FaHome />
-            <Link to="/" className="text-white">Home</Link>
+            <Link to="/" className="text-white">
+              Home
+            </Link>
+          </li>
+          <li>
+            <button
+              onClick={logOut}
+              className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
+            >
+              Log Out
+            </button>
           </li>
         </ul>
       </div>
 
       <div className="lg:hidden flex items-start p-4">
-        <button onClick={toggleSidebar} className="text-gray-800 focus:outline-none">
+        <button
+          onClick={toggleSidebar}
+          className="text-gray-800 focus:outline-none"
+        >
           <FaBars className="text-2xl" />
         </button>
       </div>
