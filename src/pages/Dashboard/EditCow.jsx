@@ -3,6 +3,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
+import { apiBaseUrl } from "../../config";
 
 function EditCow() {
   const token = localStorage.getItem("token");
@@ -22,7 +23,7 @@ function EditCow() {
 
     if (userConfirmed) {
       axios
-        .patch(`https://cow-bazar-server.onrender.com/cows/${cow?._id}`, data, {
+        .patch(`${apiBaseUrl}/cows/${cow?._id}`, data, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

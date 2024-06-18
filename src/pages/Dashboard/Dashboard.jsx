@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { apiBaseUrl } from "../../config";
 
 const Dashboard = () => {
   const [userInfo, setUserInfo] = useState(null);
@@ -12,7 +13,7 @@ const Dashboard = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const url = `https://cow-bazar-server.onrender.com/user/${user?.email}`;
+    const url = `${apiBaseUrl}/user/${user?.email}`;
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,

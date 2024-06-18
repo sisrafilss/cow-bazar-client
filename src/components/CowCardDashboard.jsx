@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import StarRatings from "react-star-ratings";
+import { apiBaseUrl } from "../config";
 
 const CowCardDashboard = ({ cow, onDelete }) => {
   const { _id, title, description, price, age, rating, image_url } = cow;
@@ -14,7 +15,7 @@ const CowCardDashboard = ({ cow, onDelete }) => {
     );
     if (userConfirmed) {
       axios
-        .delete(`https://cow-bazar-server.onrender.com/cows/${_id}`, {
+        .delete(`${apiBaseUrl}/cows/${_id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

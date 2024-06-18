@@ -16,6 +16,7 @@ import EditCow from "../pages/Dashboard/EditCow";
 import SingleCow from "../pages/SingleCow";
 import AllCowsDashboard from "../pages/Dashboard/AllCowsDashboard";
 import AllCows from "../pages/AllCows";
+import { apiBaseUrl } from "../config";
 
 const token = localStorage.getItem("token");
 
@@ -61,7 +62,7 @@ export const router = createBrowserRouter([
         path: "all-cows/:id",
         element: <SingleCow />,
         loader: ({ params }) =>
-          fetch(`https://cow-bazar-server.onrender.com/cows/${params.id}`, {
+          fetch(`${apiBaseUrl}/cows/${params.id}`, {
             headers: {
               "Content-Type": "application/json",
               authorization: `Bearer ${token}`,
@@ -82,7 +83,7 @@ export const router = createBrowserRouter([
             <Dashboard />
           </PrivateRoute>
         ),
-        loader: () => fetch(`https://cow-bazar-server.onrender.com/cows`),
+        loader: () => fetch(`${apiBaseUrl}/cows`),
       },
       {
         path: "profile/edit/:_id",
@@ -92,7 +93,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://cow-bazar-server.onrender.com/user/get/${params._id}`, {
+          fetch(`${apiBaseUrl}/user/get/${params._id}`, {
             headers: {
               "Content-Type": "application/json",
               authorization: `Bearer ${token}`,
@@ -123,7 +124,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://cow-bazar-server.onrender.com/cows/${params.id}`, {
+          fetch(`${apiBaseUrl}/cows/${params.id}`, {
             headers: {
               "Content-Type": "application/json",
               authorization: `Bearer ${token}`,
@@ -138,7 +139,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://cow-bazar-server.onrender.com/cows/${params.id}`, {
+          fetch(`${apiBaseUrl}/cows/${params.id}`, {
             headers: {
               "Content-Type": "application/json",
               authorization: `Bearer ${token}`,

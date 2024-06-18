@@ -2,6 +2,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
+import { apiBaseUrl } from "../../config";
 
 function EditProfile() {
   const userInfo = useLoaderData();
@@ -17,7 +18,7 @@ function EditProfile() {
   const onSubmit = (data) => {
     data.email = email;
     axios
-      .patch(`https://cow-bazar-server.onrender.com/user/${email}`, data, {
+      .patch(`${apiBaseUrl}/user/${email}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

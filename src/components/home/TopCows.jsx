@@ -2,13 +2,14 @@ import { useEffect } from "react";
 import CowCard from "../CowCard";
 import axios from "axios";
 import { useState } from "react";
+import { apiBaseUrl } from "../../config";
 
 const TopCows = () => {
   const [cows, setCows] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://cow-bazar-server.onrender.com/cows")
+      .get(`${apiBaseUrl}/cows`)
       .then((res) => setCows(res.data));
   }, []);
 

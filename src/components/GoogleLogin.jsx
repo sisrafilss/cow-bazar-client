@@ -1,6 +1,7 @@
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
+import { apiBaseUrl } from "../config";
 
 const GoogleLogin = () => {
   const { googleLogin } = useAuth();
@@ -17,7 +18,7 @@ const GoogleLogin = () => {
           name: data?.user?.displayName,
           photoURL: data?.user?.photoURL,
         };
-        axios.post("https://cow-bazar-server.onrender.com/user", userData).then((response) => {
+        axios.post(`${apiBaseUrl}/user`, userData).then((response) => {
           console.log(response.data.token);
           localStorage.setItem("token", response?.data?.token);
         });

@@ -1,0 +1,1 @@
+export const apiBaseUrl = "https://cow-bazar-server.onrender.com";

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { apiBaseUrl } from "../config";
 
 export const CowSearchContext = createContext(null);
 
@@ -21,7 +22,7 @@ const SearchContext = ({ children }) => {
   };
 
   useEffect(() => {
-    axios.get("https://cow-bazar-server.onrender.com/cows").then((res) => setCows(res.data));
+    axios.get(`${apiBaseUrl}/cows`).then((res) => setCows(res.data));
   }, []);
 
   const value = {

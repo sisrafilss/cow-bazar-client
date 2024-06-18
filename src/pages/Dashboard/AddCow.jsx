@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { apiBaseUrl } from "../../config";
 
 function AddCow() {
   const token = localStorage.getItem("token");
@@ -20,7 +21,7 @@ function AddCow() {
 
     if (userConfirmed) {
       axios
-        .post("https://cow-bazar-server.onrender.com/cows", data, {
+        .post(`${apiBaseUrl}/cows`, data, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

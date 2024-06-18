@@ -5,6 +5,7 @@ import GoogleLogin from "../components/GoogleLogin";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
+import { apiBaseUrl } from "../config";
 
 const RegistrationPage = () => {
   const { createUser, user } = useAuth();
@@ -37,7 +38,7 @@ const RegistrationPage = () => {
             name: data?.name,
           };
           axios
-            .post("https://cow-bazar-server.onrender.com/user", userData)
+            .post(`${apiBaseUrl}/user`, userData)
             .then((response) => {
               console.log(response.data.token);
               localStorage.setItem("token", response?.data?.token);

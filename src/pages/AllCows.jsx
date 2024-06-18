@@ -1,12 +1,13 @@
 
 import { useEffect, useState } from "react";
 import CowCard from "../components/CowCard";
+import { apiBaseUrl } from "../config";
 
 const AllCows = () => {
   const [cows, setCows] = useState([]);
 
   useEffect(() => {
-    fetch("https://cow-bazar-server.onrender.com/cows")
+    fetch(`${apiBaseUrl}/cows`)
       .then((res) => res.json())
       .then((data) => setCows(data));
   }, []);
