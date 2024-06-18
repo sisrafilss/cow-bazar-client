@@ -8,7 +8,7 @@ const TopCows = () => {
 
   useEffect(() => {
     axios
-      .get("https://cow-bazar-server-zeta.vercel.app/cows")
+      .get("https://cow-bazar-server.onrender.com/cows")
       .then((res) => setCows(res.data));
   }, []);
 

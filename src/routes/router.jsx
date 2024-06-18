@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
         path: "all-cows/:id",
         element: <SingleCow />,
         loader: ({ params }) =>
-          fetch(`https://cow-bazar-server-zeta.vercel.app/cows/${params.id}`, {
+          fetch(`https://cow-bazar-server.onrender.com/cows/${params.id}`, {
             headers: {
               "Content-Type": "application/json",
               authorization: `Bearer ${token}`,
@@ -82,7 +82,7 @@ export const router = createBrowserRouter([
             <Dashboard />
           </PrivateRoute>
         ),
-        loader: () => fetch(`https://cow-bazar-server-zeta.vercel.app/cows`),
+        loader: () => fetch(`https://cow-bazar-server.onrender.com/cows`),
       },
       {
         path: "profile/edit/:_id",
@@ -92,7 +92,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://cow-bazar-server-zeta.vercel.app/user/get/${params._id}`, {
+          fetch(`https://cow-bazar-server.onrender.com/user/get/${params._id}`, {
             headers: {
               "Content-Type": "application/json",
               authorization: `Bearer ${token}`,
@@ -123,7 +123,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://cow-bazar-server-zeta.vercel.app/cows/${params.id}`, {
+          fetch(`https://cow-bazar-server.onrender.com/cows/${params.id}`, {
             headers: {
               "Content-Type": "application/json",
               authorization: `Bearer ${token}`,
@@ -138,7 +138,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://cow-bazar-server-zeta.vercel.app/cows/${params.id}`, {
+          fetch(`https://cow-bazar-server.onrender.com/cows/${params.id}`, {
             headers: {
               "Content-Type": "application/json",
               authorization: `Bearer ${token}`,

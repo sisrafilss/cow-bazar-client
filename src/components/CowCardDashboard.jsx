@@ -14,7 +14,7 @@ const CowCardDashboard = ({ cow, onDelete }) => {
     );
     if (userConfirmed) {
       axios
-        .delete(`https://cow-bazar-server-zeta.vercel.app/cows/${_id}`, {
+        .delete(`https://cow-bazar-server.onrender.com/cows/${_id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

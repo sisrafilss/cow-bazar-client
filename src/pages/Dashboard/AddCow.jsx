@@ -20,7 +20,7 @@ function AddCow() {
 
     if (userConfirmed) {
       axios
-        .post("https://cow-bazar-server-zeta.vercel.app/cows", data, {
+        .post("https://cow-bazar-server.onrender.com/cows", data, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
