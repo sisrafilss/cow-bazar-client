@@ -8,9 +8,9 @@ Hosted in Vercel: [https://cow-bazar-client.vercel.app/](https://cow-bazar-clien
 
 ## How to run the project in Local Machine
 * First of all clone this repository
-* Add a `.evn.local` file in the root and add your firebase credential here.
+* Add a `.evn.local` file in the root and add your firebase credential there.
 * run `npm install` to install necessary packages.
-* run `npm run dev` and it will open in your local machine. Visit the show URL on the terminal.
+* run `npm run dev` and it will open in your local machine.
 
 ## Some important links
 * Frontend Repository: [https://github.com/sisrafilss/cow-bazar-client](https://github.com/sisrafilss/cow-bazar-client)
