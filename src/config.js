@@ -1,1 +1,1 @@
-export const apiBaseUrl = "https://cow-bazar-server.onrender.com";
+export const apiBaseUrl = "http://localhost:5000";

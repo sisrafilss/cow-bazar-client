@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { apiBaseUrl } from "../../config";
@@ -18,24 +17,42 @@ function AddCow() {
     const userConfirmed = window.confirm(
       `Are you sure you want to add this cow: "${data.title}"?`
     );
-
+    let modifiedData = {};
     if (userConfirmed) {
+      console.log(data);
+      const formData = new FormData();
+      formData.append("image", data.image[0]);
+
+      // uploading the image to imgBB
       axios
-        .post(`${apiBaseUrl}/cows`, data, {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        .post(`https://api.imgbb.com/1/upload`, formData, {
+          params: {
+            key: import.meta.env.VITE_IMGBB_API_KEY,
           },
         })
-        .then(function (response) {
-          console.log(response);
-          console.log(response.data);
-          if (response.data?.insertedId) {
-            toast.success("Cow added successfully!");
-          }
-          reset();
-        })
-        .catch(function (error) {
-          console.log(error);
+        .then((res) => {
+          console.log("ImgBB api response: ", res.data?.data);
+          delete data.image;
+          modifiedData = { ...data, image_url: res.data?.data?.display_url };
+
+          // uploading data to DB
+          axios
+            .post(`${apiBaseUrl}/cows`, modifiedData, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            .then(function (response) {
+              console.log(response);
+              console.log(response.data);
+              if (response.data?.insertedId) {
+                toast.success("Cow added successfully!");
+              }
+              reset();
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
         });
     }
   };
@@ -179,17 +196,16 @@ function AddCow() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Image URL
+                Image
               </label>
               <input
-                type="url"
-                {...register("image_url", { required: true })}
+                type="file"
+                accept="image/jpeg, image/png"
+                {...register("image", { required: true })}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
-              {errors.image_url && (
-                <span className="text-red-500 text-sm">
-                  Image URL is required
-                </span>
+              {errors.image && (
+                <span className="text-red-500 text-sm">Image is required</span>
               )}
             </div>
 
@@ -202,12 +218,6 @@ function AddCow() {
           </form>
         </div>
       </div>
-      {/* {showToast && (
-        <CowAddedToast
-          cow={addedCow}
-          onClose={() => setShowToast(false)}
-        />
-      )} */}
     </>
   );
 }
