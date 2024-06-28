@@ -2,8 +2,11 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { apiBaseUrl } from "../../config";
+import { useState } from "react";
+import LoadingComponent from "../../components/LoadingComponent";
 
 function AddCow() {
+  const [isLoading, setIsLoading] = useState(false);
   const token = localStorage.getItem("token");
 
   const {
@@ -19,6 +22,7 @@ function AddCow() {
     );
     let modifiedData = {};
     if (userConfirmed) {
+      setIsLoading(true);
       console.log(data);
       const formData = new FormData();
       formData.append("image", data.image[0]);
@@ -43,8 +47,7 @@ function AddCow() {
               },
             })
             .then(function (response) {
-              console.log(response);
-              console.log(response.data);
+              setIsLoading(false);
               if (response.data?.insertedId) {
                 toast.success("Cow added successfully!");
               }
@@ -218,6 +221,10 @@ function AddCow() {
           </form>
         </div>
       </div>
+      <LoadingComponent
+        isLoading={isLoading}
+        message="Adding... Please Wait..."
+      />
     </>
   );
 }

@@ -4,10 +4,12 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import { apiBaseUrl } from "../../config";
+import { useState } from "react";
+import LoadingComponent from "../../components/LoadingComponent";
 
 function EditCow() {
+  const [isLoading, setIsLoading] = useState(false);
   const token = localStorage.getItem("token");
-
   const cow = useLoaderData();
 
   const {
@@ -22,6 +24,7 @@ function EditCow() {
     );
 
     if (userConfirmed) {
+      setIsLoading(true);
       axios
         .patch(`${apiBaseUrl}/cows/${cow?._id}`, data, {
           headers: {
@@ -29,6 +32,7 @@ function EditCow() {
           },
         })
         .then(function () {
+          setIsLoading(false);
           toast.success("Cow's Data Updated!");
         })
         .catch(function (error) {
@@ -211,6 +215,8 @@ function EditCow() {
           </form>
         </div>
       </div>
+
+      <LoadingComponent isLoading={isLoading} message="Updaing Data..." />
     </>
   );
 }

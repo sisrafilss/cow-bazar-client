@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body.loading {
+    filter: blur(2px);
+  }
+  

@@ -3,14 +3,18 @@ import CowCard from "../CowCard";
 import axios from "axios";
 import { useState } from "react";
 import { apiBaseUrl } from "../../config";
+import LoadingSpinner from "../LoadingSpinner";
 
 const TopCows = () => {
   const [cows, setCows] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`${apiBaseUrl}/cows`)
-      .then((res) => setCows(res.data));
+    setLoading(true);
+    axios.get(`${apiBaseUrl}/cows`).then((res) => {
+      setCows(res.data);
+      setLoading(false);
+    });
   }, []);
 
   return (
@@ -22,9 +26,11 @@ const TopCows = () => {
         </p>
       </div>
       <div className="container mx-auto justify-center grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {cows.slice(0, 4).map((cow) => (
-          <CowCard key={cow._id} cow={cow} />
-        ))}
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          cows.slice(0, 4).map((cow) => <CowCard key={cow._id} cow={cow} />)
+        )}
       </div>
     </div>
   );
