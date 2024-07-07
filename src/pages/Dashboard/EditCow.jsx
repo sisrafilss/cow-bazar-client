@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
@@ -9,6 +8,8 @@ import LoadingComponent from "../../components/LoadingComponent";
 
 function EditCow() {
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
   const token = localStorage.getItem("token");
   const cow = useLoaderData();
 
@@ -40,6 +41,19 @@ function EditCow() {
         });
     }
   };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedImage(e.target.files);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPreviewImage(reader.result);
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+
+  }
 
   return (
     <>
@@ -191,18 +205,31 @@ function EditCow() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Image URL
+                Image
               </label>
               <input
-                type="url"
-                defaultValue={cow?.image_url}
-                {...register("image_url", { required: true })}
+                type="file"
+                accept="image/jpeg, image/png"
+                {...register("image")}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                onChange={handleImageChange}
               />
-              {errors.image_url && (
-                <span className="text-red-500 text-sm">
-                  Image URL is required
-                </span>
+              {errors.image && (
+                <span className="text-red-500 text-sm">Image is required</span>
+              )}
+
+              {previewImage ? (
+                <img
+                  src={previewImage}
+                  alt="Selected"
+                  className="mt-2 h-32 w-32 object-cover"
+                />
+              ) : (
+                <img
+                  src={cow?.image_url}
+                  alt="Current"
+                  className="mt-2 h-32 w-32 object-cover"
+                />
               )}
             </div>
 

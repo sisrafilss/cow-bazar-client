@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/no-unescaped-entities */
 const Banner = () => {
   return (
@@ -17,7 +19,7 @@ const Banner = () => {
             start a new venture, we offer a diverse selection of healthy,
             well-bred cows to meet your needs.
           </p>
-          <button className="btn btn-primary">Shop Now</button>
+          <Link to="all-cows" className="btn btn-primary">Shop Now</Link>
         </div>
       </div>
     </div>
