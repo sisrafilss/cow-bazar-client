@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { apiBaseUrl } from "../../config";
 import LoadingSpinner from "../LoadingSpinner";
+import { Link } from "react-router-dom";
 
 const TopCows = () => {
   const [cows, setCows] = useState([]);
@@ -25,13 +26,19 @@ const TopCows = () => {
           Explore Our Best Selections Handpicked for Quality and Excellence
         </p>
       </div>
-      <div className="container mx-auto justify-center grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="container mx-auto justify-center ">
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {loading ? (
           <LoadingSpinner />
         ) : (
           cows.slice(0, 4).map((cow) => <CowCard key={cow._id} cow={cow} />)
         )}
+        </div>
+        <div className="mt-6  flex  justify-center sm:justify-end">
+        <Link to="all-cows" className="btn btn-outline btn-primary">See All Cows</Link>
       </div>
+      </div>
+     
     </div>
   );
 };
